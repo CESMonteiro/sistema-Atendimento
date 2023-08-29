@@ -14,20 +14,33 @@ document.querySelector('#btn-chamar')
 const listaDeAtendimento = new Array()
 
 
+
 function incluir(){
+if (selectPrioridade.value == "N"){
     listaDeAtendimento.push(inputNome.value)
     listar()
 }
+else{
+  listaDeAtendimento.unshift(inputNome.value)
+    listar()
+}
+}
+function remover(){
+  listaDeAtendimento.shift(inputNome)
+  listar()
+}
 
 function listar(){
-  ulLista.innerHTML=''
+  ulLista.innerHTML = ""
   for (let nome of listaDeAtendimento){
-    let li = document.createElement('li')
-    li.classList.add('list-group-item')
+    let li = document.createElement ("li")
+    li.classList.add ("list-group-item")
     li.textContent = nome
-    ulLista.appendChild(li)
+    ulLista.appendChild (li)
+
   }
 }
-//eventos
+//
 btnIncluir.onclick = incluir 
+btnChamar.onclick = remover 
 
