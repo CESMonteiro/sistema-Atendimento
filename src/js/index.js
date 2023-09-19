@@ -16,26 +16,28 @@ const listaDeAtendimento = new Array()
 
 
 function incluir(){
-if (selectPrioridade.value == "N"){
-    listaDeAtendimento.push(inputNome.value)
+  let pessoa = {nome: inputNome.value, prioridade: selectPrioridade.value}
+
+if (pessoa.prioridade == "N"){
+    listaDeAtendimento.push(pessoa)
     listar()
 }
 else{
-  listaDeAtendimento.unshift(inputNome.value)
+  listaDeAtendimento.unshift(pessoa)
     listar()
 }
 }
 function remover(){
-  listaDeAtendimento.shift(inputNome)
+  listaDeAtendimento.shift()
   listar()
 }
 
 function listar(){
   ulLista.innerHTML = ""
-  for (let nome of listaDeAtendimento){
+  for (let pessoa of listaDeAtendimento){
     let li = document.createElement ("li")
     li.classList.add ("list-group-item")
-    li.textContent = nome
+    li.textContent = pessoa.nome
     ulLista.appendChild (li)
 
   }
